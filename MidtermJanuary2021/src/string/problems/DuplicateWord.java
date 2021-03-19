@@ -2,6 +2,7 @@ package string.problems;
 // BR
 
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * Created by mrahman on 04/22/17.
@@ -23,9 +24,9 @@ public class DuplicateWord {
             avgLength = avgLength + word.getKey().length();
             System.out.println("Word length is: "+word.getKey().length());
         }
-        avgLength = Math.ceil(avgLength / wordOccurrences.size());
+        avgLength = avgLength / wordOccurrences.size();
 
-        System.out.println("Average word length is: "+(int)avgLength+" (rounding up)");
+        System.out.println("Average word length is: "+(int)avgLength);
     }
 
 
@@ -46,7 +47,18 @@ public class DuplicateWord {
             map.put(words.get(i), 1);
         }
     }
-    return map;
+
+    // now lets go through each key to make sure int > 1
+        Iterator it = map.entrySet().iterator();
+
+    while(it.hasNext()) {
+        Map.Entry pair = (Map.Entry)it.next();
+
+        if((int)pair.getValue() <= 1) {
+            it.remove();
+        }
+    }
+     return map;
     }
 
 }
