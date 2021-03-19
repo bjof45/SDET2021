@@ -1,0 +1,65 @@
+This file contains SQL questions.
+Please read the questions and answer.
+
+What is Database?
+A. a collection of data, organized and structured.
+
+What is DBMS?
+-Database Management System, the systems used to manage the information in databases using files.
+
+What is the difference between SQL and MySQL?
+-SQL is the language used to interact with a database system and mysql is a database system.
+
+What is RDBMS? How is it different from DBMS?
+-Relational Database Management System, system used to manage information in databases using tables.
+
+What are Tables and Fields?
+-Tables are kinda like the files where the database information is stored in RDBMS, fields are the names for the information in tables
+for example below in the Order table: OrderID, CustomerID and OrderDate are fields.
+
+What is SQL?
+-Structured Query Language, a language that lets you access and store/change information in a database.
+
+What are Constraints in SQL?
+-Rules you can specify about the data when making a table or column
+
+What is a Primary Key?
+-Used to make a field in the table unique and be the primary way to look up data
+
+What is a Foreign Key?
+-a key that refers to a primary key in a different table, they are linked together so the wrong data doesnt get inserted somehow
+
+What is Normalization?
+-used to get rid of repetitive data and to make sure data is stored with the right logic
+
+What is Denormalization?
+
+You have 2 tables given below.
+
+Order Table:
+
+OrderID	 CustomerID	  OrderDate
+20508	    1	      2014-09-10
+30407	    2	      2016-09-19
+40250	    10	      2020-03-20
+
+Customer Table:
+
+CustomerID	   CustomerName	    CustomerPhone	     Country
+1              John Dave	    1-718-203-9087	     Australia
+2	           Brian Gary	    1-646-789-3489	     USA
+3	           Chris Brown	    1-212-342-7843       Canada
+
+Please do the following on above Order table and Customer table:
+
+Inner Join: select Order.OrderID, Customer.CustomerName from Order inner join Customer on Order.CustomerID = Customer.CustomerID;
+Left Join:
+Right Join:
+Full Join:
+
+On Customer Table, please Insert one row.
+
+On Order Table, please Update one row.
+
+
+
