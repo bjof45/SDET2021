@@ -9,14 +9,16 @@ public class DetermineLargestWord {
          Should return "10 biological".
          */
         String s="Human brain is a biological learning machine";
-        Map<Integer, String> wordNLength = findTheLargestWord(s);
-        // System.out.println("Largest word and size: "+wordNLength);
+        String wordNLength = findTheLargestWord(s);
+        System.out.println("Largest word and size: "+wordNLength);
 
     }
 
-    public static Map<Integer, String> findTheLargestWord(String wordGiven){
+    public static String findTheLargestWord(String wordGiven) {
         Map<Integer, String> map = new HashMap<Integer, String>();
         String st = "";
+        String returnString = "";
+
         ArrayList<String> words = new ArrayList<String>(Arrays.asList(wordGiven.split(" "))); // make array by splitting the sentence, hoping the words are seperated by single spaces
         int tempLength = 0;
 
@@ -26,7 +28,8 @@ public class DetermineLargestWord {
                 st = words.get(i);
             }
         }
-        map.put(tempLength, st);
-        return map;
+        returnString = tempLength + " "+ st;
+
+        return returnString;
     }
 }
