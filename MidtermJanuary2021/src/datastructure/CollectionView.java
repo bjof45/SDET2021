@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+//BR
+
 public class CollectionView {
 
 public static void main(String[] args) {
@@ -24,6 +26,7 @@ for(Entry<Integer, String> entry:map.entrySet()) {
         System.out.println("Number: "+entry.getKey()+" City:"+entry.getValue());
 }
 
+System.out.println(map);
     }
 
 }
