@@ -14,10 +14,12 @@ public class CsvReader {
          You need to find the average score of the class.
          */
 
-        String csvFilePath = System.getProperty("user.dir") + "/src/codelab/status/roster-file-03-15-2021.csv";
+        //String csvFilePath = System.getProperty("user.dir") + "/src/codelab/status/roster-file-03-15-2021.csv";
+        String csvFilePath = "/Users/berrykix/development/school/SDET2021/MidtermJanuary2021/src/codelab/status/roster-file-03-15-2021.csv";
         String line = "";
         String cvsSplitBy = ",";
         BufferedReader br = null;
+        int tempNumber = 0;
         List<Trainee> roster = new ArrayList<Trainee>();
 
         try {
@@ -39,6 +41,8 @@ public class CsvReader {
         }
         Collections.sort(roster);
         for(Trainee student:roster) {
+            tempNumber = tempNumber+student.getNumberOfExercisesSolved();
+
             if (student.getNumberOfExercisesSolved()>=600) {
                 System.out.print("You did pretty good-->                    ");
                 System.out.println(student.getFirstName() + " " + student.getLastName() + " " + student.getNumberOfExercisesSolved());
@@ -63,6 +67,9 @@ public class CsvReader {
             }
         }
 
+        int averageScore = tempNumber / roster.size();
+
+        System.out.println("Average score of the class is: "+averageScore);
     }
 
 }
