@@ -16,16 +16,23 @@ public class FindMissingNumber {
          int low = findLow(array,high);
          int tempNumber = low;
 
-         for(int i=low; i < high; i++) {
-             for(int j=0; j < array.length; j++)
-             if(array[j] != i) {
-             tempNumber = i;
-          }
 
-         }
-        System.out.println("We're missing "+tempNumber);
+        System.out.println("We're missing "+findTheDiff(low,high,array));
     }
 
+    public static int findTheDiff(int a, int b, int [] a1) {
+
+        int tempNumber = a;
+
+        for(int i=a; i < b; i++) {
+            for(int j=0; j < a1.length; j++)
+                if(a1[j] != i) {
+                    tempNumber = i;
+                }
+
+        }
+        return tempNumber;
+    }
     public static int findHigh(int [] array) {
         int high = 0;
 
