@@ -52,7 +52,7 @@ public class UseMap {
 		}
 
 		System.out.println("--------------------------");
-		
+
 		for(Entry<String, List<String>> entry: list.entrySet()) {
 			System.out.println("Character "+entry.getKey()+" has a list of villains such as "+entry.getValue());
 
