@@ -1,12 +1,24 @@
 package json.parser;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
+import java.net.URL;
+
 public class CnnAPI {
     /*
       You can get API_KEY from this below link. Once you have the API_KEY, you can fetch the top-headlines news.
       https://newsapi.org/s/cnn-api
 
       Fetch This following CNN API, It will return some news in Json data. Parse this data and construct
-      https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=YOUR_API_KEY
+      https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=0d9e35dfa3c140aab8bf9cdd70df957f
 
       MY_API_KEY=0d9e35dfa3c140aab8bf9cdd70df957f
 
@@ -37,4 +49,38 @@ public class CnnAPI {
 	   Store into choice of your database and retrieve.
 
      */
+
+    public static void main(String[] args) throws IOException {
+        URL url = new URL("https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=0d9e35dfa3c140aab8bf9cdd70df957f");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        int status = con.getResponseCode();
+
+       if(status != 200)
+           System.out.println("Something isnt right, the below wont work.....we should change this to a try/catch eventually");
+
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) con.getContent()));
+        JsonObject jsonObject = root.getAsJsonObject();
+        JsonArray jsonArray = jsonObject.getAsJsonArray("articles");
+
+    for (int i = 0; i < jsonArray.size()-1; i++) {
+            try {
+                JsonObject jsonobject = jsonArray.get(i).getAsJsonObject();
+                String author = jsonobject.get("author").toString();
+
+                if(!author.equals("null"))
+                    author = " by "+author;
+
+                else
+                    author = "";
+
+                System.out.println(jsonobject.get("title").toString()+author);
+
+            }catch(Exception ex){
+
+            }
+        }
+    }
 }
+
