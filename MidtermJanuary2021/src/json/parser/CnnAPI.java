@@ -67,12 +67,9 @@ public class CnnAPI {
     for (int i = 0; i < jsonArray.size()-1; i++) {
             try {
                 JsonObject jsonobject = jsonArray.get(i).getAsJsonObject();
-                String author = jsonobject.get("author").toString();
+                String author = " by "+jsonobject.get("author").toString();
 
-                if(!author.equals("null"))
-                    author = " by "+author;
-
-                else
+                if(author.contains("null"))
                     author = "";
 
                 System.out.println(jsonobject.get("title").toString()+author);
