@@ -14,7 +14,14 @@ public class FortuneEmployee {
 	 *
 	 **/
 	public static void main(String[] args) {
-		
+		EmployeeInfo employee = new EmployeeInfo("Barry Russell",123456);
+
+		employee.setEmployeeStartDate("May,2016");
+
+
+		employee.assignDepartment("Cashier");
+
+		employee.benefitLayout();
 
 
 	}
