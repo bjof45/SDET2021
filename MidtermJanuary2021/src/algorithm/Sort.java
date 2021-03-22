@@ -46,9 +46,20 @@ public class Sort {
 
     public int[] bubbleSort(int [] array){
         int [] list = array;
-        //implement here
+        boolean sorted = false;
 
-        
+        while(!sorted) {
+            sorted = true;
+            for(int i=0; i < list.length-1; i++) {
+
+                if (list[i + 1] < list[i]) {
+                    int temp = array[i + 1];
+                    list[i + 1] = list[i];
+                    list[i] = temp;
+                    sorted = false;
+                }
+            }
+        }
         
         return list;
     }
