@@ -21,6 +21,7 @@ public class FortuneEmployee {
 
 		employee.assignDepartment("Cashier");
 
+		employee.getEmployeeInfo();
 		employee.benefitLayout();
 
 

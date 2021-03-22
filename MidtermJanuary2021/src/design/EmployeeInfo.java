@@ -23,7 +23,7 @@ public class EmployeeInfo implements Employee {
 	 */
 	final static String companyName = "Kix Kicks";
 	private static int employeeId;
-	private static String employeeName;
+	private static String employeeName = null;
 	private static String employeeDepartment;
 	private static String employeeDOB;
 	private static String employeeJob;
@@ -64,9 +64,16 @@ public class EmployeeInfo implements Employee {
 		this.employeeEmail = name+"@kix.kicks";
 	}
 
-	public static void getEmployeeInfo() {
-		System.out.print("");
-		
+	public void getEmployeeInfo() {
+		String tempStr = "";
+		if(!employeeName.equals(null))
+			tempStr = tempStr + "Name: "+this.employeeName+"\n";
+
+		if(employeeId() > 0)
+			tempStr = tempStr+"Employee ID: "+employeeId()+"\n";
+
+		System.out.print(tempStr);
+
 	}
 
 	/*
