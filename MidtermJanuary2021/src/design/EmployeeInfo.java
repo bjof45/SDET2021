@@ -1,8 +1,9 @@
 package design;
 
+import java.util.Date;
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo implements Employee {
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,8 +21,16 @@ public class EmployeeInfo {
 	/*
 	 * declare few static and final fields and some non-static fields
 	 */
-	static String companyName;
-	
+	final static String companyName = "Kix Kicks";
+	private static int employeeId;
+	private static String employeeName;
+	private static String employeeDepartment;
+	private static String employeeDOB;
+	private static String employeeJob;
+	private static String employeeEmail;
+	private static String employeePhone;
+	private static String employeeStart = null; // Month, Year format
+
 	/*
 	 * You must implement the logic for below 2 methods and 
 	 * following 2 methods are prototype as well for other methods need to be design,
@@ -33,12 +42,33 @@ public class EmployeeInfo {
 	 * Must implement below constructor.
 	 */
 	public EmployeeInfo(int employeeId){
-		
+		this.employeeId = employeeId;
+		this.employeeEmail = employeeId+"@kix.kicks";
+
 	}
     public EmployeeInfo(String name, int employeeId){
+		this.employeeName = name;
+		this.employeeId = employeeId;
+		this.employeeEmail = name+"@kix.kicks";
+	}
+
+	public EmployeeInfo(String name) {
+		this.employeeName = name;
+		this.employeeEmail = name+"@kix.kicks";
+	}
+
+	public EmployeeInfo(String name, int employeeId, String dept) {
+		this.employeeName = name;
+		this.employeeDepartment = dept;
+		this.employeeId = employeeId;
+		this.employeeEmail = name+"@kix.kicks";
+	}
+
+	public static void getEmployeeInfo() {
+		System.out.print("");
 		
 	}
-	
+
 	/*
 	 * This methods should calculate Employee bonus based on salary and performance.
 	 * Then it will return the total yearly bonus. So you need to implement the logic.
@@ -49,7 +79,6 @@ public class EmployeeInfo {
 	 */
 	public static int calculateEmployeeBonus(int numberOfYearsWithCompany, int performanceCode){
 		int total=0;
-
 
 
 		return total;
@@ -79,6 +108,40 @@ public class EmployeeInfo {
 
 		return total;
 	}
+
+	@Override
+	public int employeeId() {
+		return this.employeeId;
+	}
+
+	@Override
+	public String employeeName() {
+		return this.employeeName;
+	}
+
+	@Override
+	public void assignDepartment(String t) {
+		this.employeeDepartment = t;
+
+	}
+
+	@Override
+	public int calculateSalary() {
+		return 0;
+	}
+
+	@Override
+	public void benefitLayout() {
+	System.out.println(companyName + " provides the following benefits: Health, Dental, Vision, Life Insurance, PTO");
+	}
+
+	public void setEmployeeStartDate(String t) {
+		String [] extractMonth = t.split(",");
+		int monthDate = DateConversion.whichMonth(extractMonth[0]);
+		this.employeeStart = monthDate+"/"+extractMonth[1];
+		System.out.println(this.employeeStart);
+	}
+
 	private static class DateConversion {
 
 		public DateConversion(Months months){}
@@ -113,22 +176,22 @@ public class EmployeeInfo {
 					date = 6;
 					break;
 				case July:
-					date = 1;
+					date = 7;
 					break;
 				case August:
-					date = 1;
+					date = 8;
 					break;
 				case September:
-					date = 1;
+					date = 9;
 					break;
 				case October:
-					date = 1;
+					date = 10;
 					break;
 				case November:
-					date = 1;
+					date = 11;
 					break;
 				case December:
-					date = 1;
+					date = 12;
 					break;
 				default:
 					date = 0;
